@@ -9,7 +9,7 @@ const app = express()
 const server = http.createServer(app)
 
 //DESPERTANDO A KINTOS SHINGAO
-schedule.scheduleJob('0 */1 * * * *', () => {
+schedule.scheduleJob('0 */25 * * * *', () => {
     axios.get(`http://kintos-api.herokuapp.com/`)
         .then((res) => {
             console.log('despertando a kintos')
