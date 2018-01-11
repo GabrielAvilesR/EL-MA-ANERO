@@ -12,10 +12,10 @@ const server = http.createServer(app)
 schedule.scheduleJob('0 */10 * * * *', () => {
     axios.get(`http://kintos-api.herokuapp.com/`)
         .then((res) => {
-            console.log('despertando a kintoss')
+            console.log('despertando a kintos')
         })
         .catch((err) => {
-            console.log('despertando a kintoss')
+            console.log('despertando a kintos')
         })
 })
 
