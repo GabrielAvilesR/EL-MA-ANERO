@@ -13,8 +13,8 @@ export const confirmationReminder = (user) => {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'no-reply@kintos.mx',
-            pass: 'Kintos#3312Maya'
+            user: 'contacto@kintos.mx',
+            pass: '3]X-Hsx5ID6i'
           },
         tls: { rejectUnauthorized: false }
     });
@@ -46,13 +46,17 @@ export const confirmationReminder = (user) => {
 }
 
 export const sendMails = (req, res, next) => {
-    MongoClient.connect('mongodb://ds111565.mlab.com:11565',{auth: {user:'gabotronics', password:'Kintos#3312'}}, (err, client) => {
+    MongoClient.connect('mongodb://localhost' , (err, client) => {
         if(err) throw err
-        const db = client.db('heroku_pwjvwks3')
+        const db = client.db('kintos-backend-dev')
 
-        db.collection('users').find({}, (err, result) =>{
+        db.collection('users').find({emailVerified:false}).toArray( (err, result) =>{
             if(err) throw err
             console.log(result)
+            for(let i = 0; i < result.length; i++){
+                confirmationReminder(result[i])
+            }
+            res.status(200).json(result.length)
         })
 
         client.close()

@@ -7,7 +7,6 @@ const axios = require('axios')
 import verificationReminder from './custom/verificationReminder'
 
 const app = express()
-app.use('/verificationReminder', verificationReminder)
 const server = http.createServer(app)
 
 
@@ -15,6 +14,13 @@ const server = http.createServer(app)
 //DESPERTANDO A KINTOS SHINGAO
 schedule.scheduleJob('0 */10 * * * *', () => {
     axios.get(`http://kintos-api.herokuapp.com/`)
+        .then((res) => {
+            console.log('despertando a kintos')
+        })
+        .catch((err) => {
+            console.log('despertando a kintos')
+        })
+    axios.get(`https://lab-web-ene-2018.herokuapp.com/`)
         .then((res) => {
             console.log('despertando a kintos')
         })
