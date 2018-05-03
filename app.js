@@ -22,10 +22,10 @@ schedule.scheduleJob('0 */10 * * * *', () => {
         })
     axios.get(`https://lab-web-ene-2018.herokuapp.com/`)
         .then((res) => {
-            console.log('despertando a kintos')
+            console.log('despertando a elections')
         })
         .catch((err) => {
-            console.log('despertando a kintos')
+            console.log('despertando a elections')
         })
 })
 
